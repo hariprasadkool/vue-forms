@@ -115,10 +115,17 @@ export default {
       const url = new Request('http://127.0.0.1:9000/')
       fetch(url, {
           method: 'post',
+          // headers: {
+          //   "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+          // },
+          // body: 'foo=bar&lorem=ipsum'
           headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            "Content-type": "application/json"
           },
-          body: 'foo=bar&lorem=ipsum'
+          body: JSON.stringify({
+            name: this.input,
+            login: 'hp',
+          })
         })
         .then(json)
         .then(function (data) {
