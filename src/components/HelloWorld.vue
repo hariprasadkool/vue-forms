@@ -98,7 +98,7 @@ export default {
     },
     // get data from an url or api
     getData: function () {
-      let self = this
+      const self = this
       const myRequest = new Request('https://jsonplaceholder.typicode.com/posts')
       fetch(myRequest)
         .then((response) => {
@@ -111,21 +111,26 @@ export default {
     },
     // post data from an url or api
     postData: function(){
-      let self = this
+      const input = document.querySelector('input[type="file"]')
+      const data = new FormData()
+      data.append('file', input.files[0])
+      data.append('name', 'hp')
+      const self = this
       const url = new Request('http://127.0.0.1:9000/')
       fetch(url, {
           method: 'post',
+          body: data
           // headers: {
           //   "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
           // },
           // body: 'foo=bar&lorem=ipsum'
-          headers: {
-            "Content-type": "application/json"
-          },
-          body: JSON.stringify({
-            name: this.input,
-            login: 'hp',
-          })
+          // headers: {
+          //   "Content-type": "application/json"
+          // },
+          // body: JSON.stringify({
+          //   name: this.input,
+          //   login: 'hp',
+          // })
         })
         .then(json)
         .then(function (data) {
