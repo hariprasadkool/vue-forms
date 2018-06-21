@@ -67,34 +67,32 @@
   </div>
 </template>
 
-
-
 <script>
 export default {
-  name: "hello",
-  data() {
+  name: 'hello',
+  data () {
     return {
-      msg: "Welcome to Your Vue.js App",
-      input_val: "",
-      message: "",
+      msg: 'Welcome to Your Vue.js App',
+      input_val: '',
+      message: '',
       checkedNames: [],
-      picked: "",
-      selected: "",
-      imaging: "",
+      picked: '',
+      selected: '',
+      imaging: '',
       counter: 1,
       output: ''
-    };
+    }
   },
   methods: {
     getFormValues (submitEvent) {
-      this.input = this.input_val;
-      this.textarea = this.message;
-      this.checkbox = this.checkedNames;
-      this.radio = this.picked;
-      this.selectbox = this.selected;
-      this.image = submitEvent.target.elements.imagefile.value;
-     // this.getData();
-      this.postData();
+      this.input = this.input_val
+      this.textarea = this.message
+      this.checkbox = this.checkedNames
+      this.radio = this.picked
+      this.selectbox = this.selected
+      this.image = submitEvent.target.elements.imagefile.value
+      // this.getData();
+      this.postData()
     },
     // get data from an url or api
     getData: function () {
@@ -102,47 +100,48 @@ export default {
       const myRequest = new Request('https://jsonplaceholder.typicode.com/posts')
       fetch(myRequest)
         .then((response) => {
-              return response.json()
-            })
+          return response.json()
+        })
         .then((data) => {
           self.items = data
           console.log(self.items)
-        }).catch( error => { console.log(error); });
+        }).catch(error => {
+          console.log(error)
+        })
     },
     // post data from an url or api
-    postData: function(){
+    postData: function () {
       const input = document.querySelector('input[type="file"]')
       const data = new FormData()
       data.append('file', input.files[0])
       data.append('name', 'hp')
-      const self = this
       const url = new Request('http://127.0.0.1:9000/')
       fetch(url, {
-          method: 'post',
-          body: data
-          // headers: {
-          //   "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-          // },
-          // body: 'foo=bar&lorem=ipsum'
-          // headers: {
-          //   "Content-type": "application/json"
-          // },
-          // body: JSON.stringify({
-          //   name: this.input,
-          //   login: 'hp',
-          // })
-        })
-        .then(json)
+        method: 'post',
+        body: data
+        // headers: {
+        //   "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        // },
+        // body: 'foo=bar&lorem=ipsum'
+        // headers: {
+        //   "Content-type": "application/json"
+        // },
+        // body: JSON.stringify({
+        //   name: this.input,
+        //   login: 'hp',
+        // })
+      })
+        // .then(json)
         .then(function (data) {
-          console.log('Request succeeded with JSON response', data);
+          console.log('Request succeeded with JSON response', data)
         })
         .catch(function (error) {
-          console.log('Request failed', error);
-        });
+          console.log('Request failed', error)
+        })
     }
   }
 
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
