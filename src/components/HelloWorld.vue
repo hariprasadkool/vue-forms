@@ -114,7 +114,12 @@ export default {
       const input = document.querySelector('input[type="file"]')
       const data = new FormData()
       data.append('file', input.files[0])
-      data.append('name', 'hp')
+      data.append('name', this.input)
+      data.append('message', this.textarea)
+      data.append('checkbox', this.checkbox)
+      data.append('radio', this.radio)
+      data.append('selected', this.selectbox)
+      data.append('imagepath', this.image)
       const url = new Request('http://127.0.0.1:9000/')
       fetch(url, {
         method: 'post',
