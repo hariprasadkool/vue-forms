@@ -95,7 +95,7 @@ export default {
       this.postData()
     },
     // get data from an url or api
-    getData: function () {
+    getData () {
       const self = this
       const myRequest = new Request('https://jsonplaceholder.typicode.com/posts')
       fetch(myRequest)
@@ -110,7 +110,7 @@ export default {
         })
     },
     // post data from an url or api
-    postData: function () {
+    postData () {
       const input = document.querySelector('input[type="file"]')
       const data = new FormData()
       data.append('file', input.files[0])
