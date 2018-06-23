@@ -120,7 +120,8 @@ export default {
       data.append('radio', this.radio)
       data.append('selected', this.selectbox)
       data.append('imagepath', this.image)
-      const url = new Request('http://127.0.0.1:9000/')
+      // const url = new Request('http://127.0.0.1:9000/')
+      const url = new Request('http://192.168.0.157:9000/')
       fetch(url, {
         method: 'post',
         body: data
